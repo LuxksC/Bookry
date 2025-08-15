@@ -29,8 +29,15 @@ class AppCoordinator: BaseCoordinator<UINavigationController> {
     
     /// Shows the first view of the App
     override func start() {
-        let view = RootView()
-        let controller = UIHostingController(rootView: view)
+        startAuth()
+    }
+}
+
+// MARK: - Show Views
+
+extension AppCoordinator {
+    func startAuth() {
+        let controller = LoginViewController(mainView: LoginView())
         presenter.setViewControllers([controller], animated: false)
     }
 }
