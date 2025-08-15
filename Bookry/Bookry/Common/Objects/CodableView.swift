@@ -55,9 +55,9 @@ extension CodableView {
     func setupViews() {}
     
     func setupCodableView() {
+        setupViews()
         buildHierarchy()
         setupConstraints()
-        setupViews()
         setupThemeBindings()
     }
 }
