@@ -8,8 +8,11 @@
 import SwiftUI
 
 protocol ColorScheme {
+    var black: Color { get }
+    var danger: Color { get }
+    var dangerDark: Color { get }
+    var dangerLight: Color { get }
     var primary: Color { get }
     var secondary: Color { get }
-    var black: Color { get }
     var white: Color { get }
 }

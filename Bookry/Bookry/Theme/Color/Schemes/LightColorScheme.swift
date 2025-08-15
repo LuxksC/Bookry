@@ -12,8 +12,11 @@ extension ColorScheme where Self == LightColorScheme {
 }
 
 struct LightColorScheme: ColorScheme {
+    var black: Color = Color(hex: 0x000000)
+    var danger: Color = Color(hex: 0xD32F2F) // strong red, visible on purple
+    var dangerDark: Color = Color(hex: 0xB71C1C) // deep red
+    var dangerLight: Color = Color(hex: 0xFFCDD2) // light red/pink
     var primary: Color = Color(hex: 0x542583)
     var secondary: Color = Color(hex: 0xFDB827)
-    var black: Color = Color(hex: 0x000000)
     var white: Color = Color(hex: 0xFFFFFF)
 }
