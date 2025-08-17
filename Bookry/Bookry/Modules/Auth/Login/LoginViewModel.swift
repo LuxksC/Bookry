@@ -9,13 +9,18 @@ import Foundation
 import SwiftUI
 
 protocol LoginViewModelable {
-    func changeBackgroundColor()
+    var navDelegate: LoginViewModelNavDelegate? { get set }
+    func didTapContinue()
+}
+
+protocol LoginViewModelNavDelegate: AnyObject {
+    func onLogin()
 }
 
 class LoginViewModel: ObservableObject, LoginViewModelable {
-    @Published var backgroundColor: Color = Color.purple
+    var navDelegate: (any LoginViewModelNavDelegate)?
     
-    func changeBackgroundColor() {
-        print("ChangeColorCalled")
+    func didTapContinue() {
+        navDelegate?.onLogin()
     }
 }

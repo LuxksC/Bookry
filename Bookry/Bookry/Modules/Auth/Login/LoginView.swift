@@ -9,6 +9,9 @@ import UIKit
 import SwiftUI
 
 class LoginView: UICodableView {
+    // MARK: Public Actions
+    var onContinueTapped: (() -> Void)?
+    
     // MARK: - UI Components
     lazy var backgroundView: UIView = {
         let view = UIView()
@@ -35,7 +38,7 @@ class LoginView: UICodableView {
     
     lazy var continueButton: UIView = {
         let hostingController = UIHostingController(
-            rootView: PrimaryButton(text: "Teste", action: { print("Teste")})
+            rootView: PrimaryButton(text: "Teste", action: didTapContinue)
             .environment(themeManager)
         )
         let view = hostingController.view! // fix
@@ -107,8 +110,14 @@ class LoginView: UICodableView {
     }
     
     // MARK: - Actions
+    
     @objc private func didTapUpdateTheme() {
         let newTheme: ColorTheme = themeManager.colorTheme == .light ? .dark : .light
         themeManager.apply(colorTheme: newTheme)
+    }
+    
+    @objc private func didTapContinue() {
+        print("didTapContinue Called")
+        onContinueTapped?()
     }
 }

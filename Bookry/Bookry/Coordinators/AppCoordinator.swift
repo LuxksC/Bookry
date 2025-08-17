@@ -27,7 +27,7 @@ class AppCoordinator: BaseCoordinator<UINavigationController> {
         self.window.makeKeyAndVisible()
     }
     
-    /// Shows the first view of the App
+    /// Show the first view of the App
     override func start() {
         startAuth()
     }
@@ -37,7 +37,7 @@ class AppCoordinator: BaseCoordinator<UINavigationController> {
 
 extension AppCoordinator {
     func startAuth() {
-        let controller = LoginViewController(mainView: LoginView())
-        presenter.setViewControllers([controller], animated: false)
+        let authCoordinator = AuthCoordinator(presenter: presenter)
+        authCoordinator.start()
     }
 }

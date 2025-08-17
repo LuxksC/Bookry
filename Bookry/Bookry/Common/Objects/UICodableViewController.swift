@@ -7,11 +7,13 @@
 
 import UIKit
 
-class UICodableViewController<CodableView>: UIViewController where CodableView: UICodableView {
+class UICodableViewController<CodableView, VM>: UIViewController where CodableView: UICodableView {
     private(set) var mainView: CodableView
+    private(set) var vm: VM
     
-    init(mainView: CodableView) {
+    init(mainView: CodableView, viewModel: VM) {
         self.mainView = mainView
+        self.vm = viewModel
         super.init(nibName: nil, bundle: nil)
     }
     
