@@ -33,6 +33,9 @@ struct DefaultFont: BFont {
             return UIFont.systemFont(ofSize: 24, weight: .regular)
         case .regular6:
             return UIFont.systemFont(ofSize: 16, weight: .regular)
+        case .regular8:
+            return UIFont.systemFont(ofSize: 12, weight: .regular)
+            
         }
     }
 }

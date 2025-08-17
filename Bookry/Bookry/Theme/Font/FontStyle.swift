@@ -15,4 +15,5 @@ enum FontStyle {
     case regular2
     case regular4
     case regular6
+    case regular8
 }
