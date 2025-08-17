@@ -13,7 +13,7 @@ protocol ThemeManagerProtocol {
     func apply(font: BFont, colorTheme: ColorTheme)
 }
 
-class ThemeManager: ObservableObject, ThemeManagerProtocol {
+class ThemeManager: Observable, ObservableObject, ThemeManagerProtocol {
     @Published private(set) var colorTheme: ColorTheme = .light
     @Published private(set) var font: BFont = .default
     

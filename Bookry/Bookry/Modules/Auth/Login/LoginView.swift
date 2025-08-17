@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 class LoginView: UICodableView {
     // MARK: - UI Components
@@ -32,26 +33,28 @@ class LoginView: UICodableView {
         return label
     }()
     
-    lazy var emailTextField: EmailTextField = {
-        let field = EmailTextField()
-        return field
+    lazy var continueButton: UIView = {
+        let hostingController = UIHostingController(
+            rootView: PrimaryButton(text: "Teste", action: { print("Teste")})
+            .environment(themeManager)
+        )
+        let view = hostingController.view! // fix
+        view.backgroundColor = .clear
+        return view
     }()
     
-    lazy var updateThemeButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.tintColor = UIColor(themeManager.colorScheme.secondary)
-        button.setTitle("Update Theme", for: .normal)
-        button.addTarget(nil, action: #selector(didTapUpdateTheme), for: .touchUpInside)
-        return button
+    lazy var emailTextField: EmailTextField = {
+        let textField = EmailTextField()
+        return textField
     }()
     
     // MARK: - Setup Hirearchy
     override func buildHierarchy() {
         insertSubview(backgroundView, at: 0)
-        addSubview(updateThemeButton)
+        addSubview(continueButton)
         addSubview(logoImage)
         addSubview(title)
-        addSubview(emailTextField)
+        addSubview(emailTextField) // Add the text field to the hierarchy
     }
     
     // MARK: - Setup Constraints
@@ -73,11 +76,13 @@ class LoginView: UICodableView {
             .topAnchor(equalTo: title.bottomAnchor, constant: 16)
             .leadingAnchor(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 16)
             .trailingAnchor(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -16)
+            .heightAnchor(equalTo: 60)
         
-        updateThemeButton.centerXAnchor(equalTo: centerXAnchor)
-            .centerYAnchor(equalTo: centerYAnchor)
-            .widthAnchor(equalTo: 200)
-            .heightAnchor(equalTo: 50)
+        continueButton
+            .topAnchor(equalTo: emailTextField.bottomAnchor, constant: 16)
+            .leadingAnchor(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 16)
+            .trailingAnchor(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -16)
+            
     }
     
     // MARK: - Setup Combine Theme Bindings
@@ -88,6 +93,7 @@ class LoginView: UICodableView {
                 guard let self else { return }
                 self.backgroundView.backgroundColor = UIColor(newColorTheme.scheme.primary)
                 self.logoImage.tintColor = UIColor(newColorTheme.scheme.secondary)
+                self.title.textColor = UIColor(newColorTheme.scheme.white)
             }
             .store(in: &cancellables)
         
@@ -98,8 +104,6 @@ class LoginView: UICodableView {
                 self.title.font = newFont.style(.bold4)
             }
             .store(in: &cancellables)
-            
-                
     }
     
     // MARK: - Actions
