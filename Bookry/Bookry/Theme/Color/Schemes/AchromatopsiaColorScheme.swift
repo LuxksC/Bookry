@@ -16,4 +16,7 @@ struct AchromatopsiaColorScheme: ColorScheme {
     var primary: Color = Color(hex: 0x888888) // medium gray
     var secondary: Color = Color(hex: 0xCCCCCC) // light gray
     var white: Color = Color(hex: 0xFFFFFF)
+    var gray: Color = Color(hex: 0x888888) // medium gray
+    var grayLight: Color = Color(hex: 0xCCCCCC) // light gray
+    var grayDark: Color = Color(hex: 0x444444) // dark gray
 }

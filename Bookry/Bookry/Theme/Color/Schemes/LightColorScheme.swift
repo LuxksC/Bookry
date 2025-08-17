@@ -19,4 +19,7 @@ struct LightColorScheme: ColorScheme {
     var primary: Color = Color(hex: 0x542583)
     var secondary: Color = Color(hex: 0xFDB827)
     var white: Color = Color(hex: 0xFFFFFF)
+    var gray: Color = Color(hex: 0x888888) // neutral gray
+    var grayLight: Color = Color(hex: 0xCCCCCC) // light gray
+    var grayDark: Color = Color(hex: 0x444444) // dark gray
 }

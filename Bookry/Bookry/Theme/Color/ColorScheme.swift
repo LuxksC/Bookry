@@ -15,4 +15,7 @@ protocol ColorScheme {
     var primary: Color { get }
     var secondary: Color { get }
     var white: Color { get }
+    var gray: Color { get }
+    var grayLight: Color { get }
+    var grayDark: Color { get }
 }

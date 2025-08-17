@@ -16,4 +16,7 @@ struct TritanopiaColorScheme: ColorScheme {
     var primary: Color = Color(hex: 0x542583) // purple, distinguishable for tritanopes
     var secondary: Color = Color(hex: 0xE07A5F) // orange, distinguishable for tritanopes
     var white: Color = Color(hex: 0xFFFFFF)
+    var gray: Color = Color(hex: 0x888888) // neutral gray
+    var grayLight: Color = Color(hex: 0xCCCCCC) // light gray
+    var grayDark: Color = Color(hex: 0x444444) // dark gray
 }
