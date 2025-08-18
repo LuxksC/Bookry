@@ -7,7 +7,13 @@
 
 import UIKit
 
+protocol AuthCoordinatorDelegate: AnyObject {
+    func onAuthCoordinatorCompletion(authCoordinator: AuthCoordinator)
+}
+
 class AuthCoordinator: BaseCoordinator<UINavigationController> {
+    weak var delegate: AuthCoordinatorDelegate?
+    
     override func start() {
         showLoginView()
     }
@@ -29,6 +35,6 @@ extension AuthCoordinator {
 // MARK: - LoginNavDelegate
 extension AuthCoordinator: LoginViewModelNavDelegate {
     func onLogin() {
-        print("Go to home screen")
+        delegate?.onAuthCoordinatorCompletion(authCoordinator: self)
     }
 }

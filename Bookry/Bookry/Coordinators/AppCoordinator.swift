@@ -38,6 +38,32 @@ class AppCoordinator: BaseCoordinator<UINavigationController> {
 extension AppCoordinator {
     func startAuth() {
         let authCoordinator = AuthCoordinator(presenter: presenter)
+        authCoordinator.delegate = self
         authCoordinator.start()
+        self.store(childCoordinator: authCoordinator)
+    }
+    
+    func startMain() {
+        let mainCoordinator = MainCoordinator(presenter: presenter)
+        mainCoordinator.delegate = self
+        mainCoordinator.start()
+        self.store(childCoordinator: mainCoordinator)
+    }
+}
+
+// MARK: - AuthCoordinatorDelegate
+extension AppCoordinator: AuthCoordinatorDelegate {
+    func onAuthCoordinatorCompletion(authCoordinator: AuthCoordinator) {
+        self.remove(childCoordinator: authCoordinator)
+        startMain()
+    }
+}
+
+// MARK: - MainCoordinatorDelegate
+extension AppCoordinator: MainCoordinatorDelegate {
+    func onMainCoordinatorCompletion(mainCoordinator: MainCoordinator) {
+        print("onMainCoordinatorCompletion called")
+        self.remove(childCoordinator: mainCoordinator)
+        startAuth()
     }
 }

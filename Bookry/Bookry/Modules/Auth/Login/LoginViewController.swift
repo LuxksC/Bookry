@@ -22,7 +22,6 @@ class LoginViewController: UICodableViewController<LoginView, LoginViewModelable
     
     private func setupActions() {
         mainView.onContinueTapped = { [weak self] in
-            print("setupActions called")
             self?.vm.didTapContinue()
         }
     }

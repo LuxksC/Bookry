@@ -117,7 +117,6 @@ class LoginView: UICodableView {
     }
     
     @objc private func didTapContinue() {
-        print("didTapContinue Called")
         onContinueTapped?()
     }
 }
