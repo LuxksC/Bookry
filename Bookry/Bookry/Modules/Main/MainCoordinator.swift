@@ -12,7 +12,7 @@ protocol MainCoordinatorDelegate: AnyObject {
     func onMainCoordinatorCompletion(mainCoordinator: MainCoordinator)
 }
 
-enum MainTabViewShowing {
+enum TabBarTag: Int {
     case home
     case settings
 }
@@ -21,63 +21,75 @@ class MainCoordinator: BaseCoordinator<UINavigationController> {
     weak var delegate: MainCoordinatorDelegate?
     
     override func start() {
-//        showTabView()
-        showHome()
+        showTabView()
     }
 }
 
 // MARK: - Show Views
 extension MainCoordinator {
     private func showTabView() {
-        let view = MainTabView(vm: MainTabViewModel())
-        view.vm.navDelegate = self
-        let controller = UIHostingController(rootView: view)
+        let homeCoordinator = configHomeCoordinator()
+        let settingsCoordinator = configSettingsCoordinator()
         
-        presenter.setViewControllers([controller], animated: false)
+        /// The advantage of adding the presenter here is that when we change to a specific tab
+        /// it will show the view controller that was on top of the stack the last time we were on that tab
+        /// and not the first view controller of the stack.
+        let controllers = [
+            homeCoordinator.presenter,
+            settingsCoordinator.presenter
+        ]
+        
+        let tabBarController = UITabBarController()
+        tabBarController.setViewControllers(controllers, animated: false)
+        
+        presenter.setViewControllers([tabBarController], animated: true)
+        // Some people here would do 'presenter = tabBarController',
+        // but doing this would make we lost the AppCoordinator flow
+        // and so, we would not be able to go back to the AppCoordinator
+        // flow using the presenter
     }
 }
 
-//MARK: - Show SubViews
-extension MainCoordinator {
-    private func showHome() {
-        let view = HomeView(vm: HomeViewModel())
-        view.vm.navDelegate = self
-        let controller = UIHostingController(rootView: view)
+// MARK: - Sub Coordinators
+private extension MainCoordinator {
+    func configHomeCoordinator() -> HomeCoordinator {
+        /// The MainCoordinator will provide a separeted presenter for the sub coordinators inside of it
+        /// This way we prevent problems of comunication between the MainCoordinator presenter and
+        /// its subcoordinators presenters
+        let flowPresenter = UINavigationController()
+        flowPresenter.tabBarItem = UITabBarItem(
+            title: "Books",
+            image: UIImage(systemName: "book"),
+            tag: TabBarTag.home.rawValue
+        )
         
-        presenter.setViewControllers([controller], animated: false)
+        let coordinator = HomeCoordinator(presenter: flowPresenter)
+        coordinator.start()
+        
+        store(childCoordinator: coordinator)
+        return coordinator
     }
     
-    private func showSettings() {
-        let view = SettingsView(vm: SettingsViewModel())
-        view.vm.navDelegate = self
-        let controller = UIHostingController(rootView: view)
+    func configSettingsCoordinator() -> SettingsCoordinator {
+        let flowPresenter = UINavigationController()
+        flowPresenter.tabBarItem = UITabBarItem(
+            title: "Settings",
+            image: UIImage(systemName: "gearshape"),
+            tag: TabBarTag.settings.rawValue
+        )
         
-        presenter.setViewControllers([controller], animated: false)
+        let coordinator = SettingsCoordinator(presenter: flowPresenter)
+        coordinator.start()
+        
+        store(childCoordinator: coordinator)
+        return coordinator
     }
 }
 
-// MARK: - MainTabDelegate
-extension MainCoordinator: MainTabNavDelegate {}
-
-// MARK: - HomeNavDelegate
-extension MainCoordinator: HomeNavDelegate {
-    func onLogout() {
-        print("MainCoordinator onLogout called")
-        delegate?.onMainCoordinatorCompletion(mainCoordinator: self)
-    }
-    
-    func onSettingsTapped() {
-        showSettings()
-    }
-}
-
-// MARK: - SettingsNavDelegate
-extension MainCoordinator: SettingsNavDelegate {
-    func onHomeTapped() {
-        showHome()
-    }
-    
-    func onThemesTapped() {
-        print("onThemesTapped called")
-    }
-}
+// MARK: - HomeCoordinatorDelegate
+//extension MainCoordinator: HomeCoordinatorDelegate {
+//    func onLogout() {
+//        print("MainCoordinator onLogout called")
+//        delegate?.onMainCoordinatorCompletion(mainCoordinator: self)
+//    }
+//}

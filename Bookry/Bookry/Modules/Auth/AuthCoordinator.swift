@@ -20,7 +20,7 @@ class AuthCoordinator: BaseCoordinator<UINavigationController> {
 }
 
 // MARK: - Show Views
-extension AuthCoordinator {
+private extension AuthCoordinator {
     private func showLoginView() {
         let view = LoginView()
         let viewModel = LoginViewModel()

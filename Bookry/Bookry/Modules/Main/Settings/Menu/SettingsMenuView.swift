@@ -1,5 +1,5 @@
 //
-//  SettingsView.swift
+//  SettingsMenuView.swift
 //  Bookry
 //
 //  Created by Lucas de Castro Souza on 15/08/25.
@@ -7,12 +7,12 @@
 
 import SwiftUI
 
-struct SettingsView: View {
-    @StateObject var vm: SettingsViewModel
+struct SettingsMenuView: View {
+    @StateObject var vm: SettingsMenuViewModel
     
     var body: some View {
         VStack {
-            Text("Settings View")
+            Text("SettingsMenu View")
                 .font(.largeTitle)
             
             Button(action: vm.didTapHome, label: {
@@ -23,5 +23,5 @@ struct SettingsView: View {
 }
 
 #Preview {
-    SettingsView(vm: .init())
+    SettingsMenuView(vm: .init())
 }

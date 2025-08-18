@@ -7,20 +7,20 @@
 
 import SwiftUI
 
-protocol SettingsViewModelable: ObservableObject {
-    var navDelegate: SettingsNavDelegate? { get set }
+protocol SettingsMenuViewModelable: ObservableObject {
+    var navDelegate: SettingsMenuNavDelegate? { get set }
     func didTapHome()
     func didTapThemes()
 }
 
-protocol SettingsNavDelegate {
+protocol SettingsMenuNavDelegate {
     func onThemesTapped()
     func onHomeTapped()
 }
 
-class SettingsViewModel: BaseViewModel, SettingsViewModelable {
+class SettingsMenuViewModel: BaseViewModel, SettingsMenuViewModelable {
     
-    var navDelegate: (any SettingsNavDelegate)?
+    var navDelegate: (any SettingsMenuNavDelegate)?
     
     func didTapHome() {
         navDelegate?.onHomeTapped()

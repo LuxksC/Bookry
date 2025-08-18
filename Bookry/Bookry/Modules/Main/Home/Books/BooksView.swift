@@ -1,5 +1,5 @@
 //
-//  HomeView.swift
+//  BooksView.swift
 //  Bookry
 //
 //  Created by Lucas de Castro Souza on 15/08/25.
@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-struct HomeView: View {
-    @StateObject var vm: HomeViewModel
+struct BooksView: View {
+    @StateObject var vm: BooksViewModel
     
     var body: some View {
         VStack {
@@ -27,5 +27,5 @@ struct HomeView: View {
 }
 
 #Preview {
-    HomeView(vm: .init())
+    BooksView(vm: .init())
 }

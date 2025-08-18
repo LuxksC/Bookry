@@ -34,8 +34,7 @@ class AppCoordinator: BaseCoordinator<UINavigationController> {
 }
 
 // MARK: - Show Views
-
-extension AppCoordinator {
+private extension AppCoordinator {
     func startAuth() {
         let authCoordinator = AuthCoordinator(presenter: presenter)
         authCoordinator.delegate = self

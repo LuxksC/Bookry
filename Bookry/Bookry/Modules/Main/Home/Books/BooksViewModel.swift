@@ -1,5 +1,5 @@
 //
-//  HomeViewModel.swift
+//  BooksViewModel.swift
 //  Bookry
 //
 //  Created by Lucas de Castro Souza on 17/08/25.
@@ -7,20 +7,20 @@
 
 import SwiftUI
 
-protocol HomeViewModelable: ObservableObject {
-    var navDelegate: HomeNavDelegate? { get set }
+protocol BooksViewModelable: ObservableObject {
+    var navDelegate: BooksNavDelegate? { get set }
     func didTapSettings()
     func didTapLogout()
 }
 
-protocol HomeNavDelegate {
+protocol BooksNavDelegate {
     func onLogout()
     func onSettingsTapped()
 }
 
-class HomeViewModel: BaseViewModel, HomeViewModelable {
+class BooksViewModel: BaseViewModel, BooksViewModelable {
     
-    var navDelegate: HomeNavDelegate?
+    var navDelegate: BooksNavDelegate?
     
     func didTapSettings() {
         navDelegate?.onSettingsTapped()
