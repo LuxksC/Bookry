@@ -18,7 +18,7 @@ protocol LoginViewModelNavDelegate: AnyObject {
 }
 
 class LoginViewModel: ObservableObject, LoginViewModelable {
-    var navDelegate: (any LoginViewModelNavDelegate)?
+    weak var navDelegate: LoginViewModelNavDelegate?
     
     func didTapContinue() {
         navDelegate?.onLogin()

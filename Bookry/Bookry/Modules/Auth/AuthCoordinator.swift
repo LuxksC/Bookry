@@ -28,7 +28,7 @@ private extension AuthCoordinator {
         
         let controller = LoginViewController(mainView: view, viewModel: viewModel)
         
-        presenter.setViewControllers([controller], animated: false)
+        presenter.setViewControllers([controller], animated: true)
     }
 }
 

@@ -18,9 +18,36 @@ class SettingsCoordinator: BaseCoordinator<UINavigationController> {
 private extension SettingsCoordinator {
     func showSettingsMenu() {
         let viewModel = SettingsMenuViewModel()
+        viewModel.navDelegate = self
         let view = SettingsMenuView(vm: viewModel)
-        let controller = UIHostingController(rootView: view)
+        let controller = HostingController(rootView: view, viewModel: viewModel)
+        controller.title = "Settings"
         
         presenter.setViewControllers([controller], animated: true)
+    }
+    
+    func showThemes() {
+        let viewModel = ThemesViewModel()
+        viewModel.navDelegate = self
+        let view = ThemesView(vm: viewModel)
+        let controller = ThemesHostingController(rootView: view, viewModel: viewModel)
+        controller.hidesBottomBarWhenPushed = true
+        
+        presenter.pushViewController(controller, animated: true)
+
+    }
+}
+
+// MARK: - SettingsMenuNavDelegate
+extension SettingsCoordinator: SettingsMenuNavDelegate {
+    func onSettingsMenuThemesTapped() {
+        showThemes()
+    }
+}
+
+// MARK: - ThemesNavDelegate
+extension SettingsCoordinator: ThemesNavDelegate {
+    func onThemesBackTapped() {
+        presenter.popViewController(animated: true)
     }
 }

@@ -15,10 +15,6 @@ struct BooksView: View {
             Text("Home View")
                 .font(.largeTitle)
             
-            Button(action: vm.didTapSettings, label: {
-                Text("Go to Settings")
-            })
-            
             Button(action: vm.didTapLogout, label: {
                 Text("Logout User")
             })

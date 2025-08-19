@@ -9,6 +9,7 @@ import UIKit
 import SwiftUI
 
 protocol MainCoordinatorDelegate: AnyObject {
+    /// Comunicate with App Coordinator to start Auth flow
     func onMainCoordinatorCompletion(mainCoordinator: MainCoordinator)
 }
 
@@ -64,6 +65,7 @@ private extension MainCoordinator {
         )
         
         let coordinator = HomeCoordinator(presenter: flowPresenter)
+        coordinator.delegate = self
         coordinator.start()
         
         store(childCoordinator: coordinator)
@@ -87,9 +89,8 @@ private extension MainCoordinator {
 }
 
 // MARK: - HomeCoordinatorDelegate
-//extension MainCoordinator: HomeCoordinatorDelegate {
-//    func onLogout() {
-//        print("MainCoordinator onLogout called")
-//        delegate?.onMainCoordinatorCompletion(mainCoordinator: self)
-//    }
-//}
+extension MainCoordinator: HomeCoordinatorDelegate {
+    func onHomeCoordinatorLogout() {
+        delegate?.onMainCoordinatorCompletion(mainCoordinator: self)
+    }
+}

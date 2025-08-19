@@ -11,12 +11,12 @@ struct SettingsMenuView: View {
     @StateObject var vm: SettingsMenuViewModel
     
     var body: some View {
-        VStack {
+        VStack(spacing: 32) {
             Text("SettingsMenu View")
                 .font(.largeTitle)
             
-            Button(action: vm.didTapHome, label: {
-                Text("Go to Home")
+            Button(action: vm.didTapThemes, label: {
+                Text("Go to Themes")
             })
         }
     }

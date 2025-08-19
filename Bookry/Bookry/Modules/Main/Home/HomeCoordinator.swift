@@ -8,7 +8,13 @@
 import SwiftUI
 import UIKit
 
+protocol HomeCoordinatorDelegate: AnyObject {
+    func onHomeCoordinatorLogout()
+}
+
 class HomeCoordinator: BaseCoordinator<UINavigationController> {
+    weak var delegate: HomeCoordinatorDelegate?
+    
     override func start() {
         showBooksView()
     }
@@ -18,11 +24,21 @@ class HomeCoordinator: BaseCoordinator<UINavigationController> {
 private extension HomeCoordinator {
     func showBooksView() {
         let viewModel = BooksViewModel()
+        viewModel.navDelegate = self
         let view = BooksView(vm: viewModel)
-        let controller = UIHostingController(rootView: view)
+        let controller = HostingController(rootView: view, viewModel: viewModel)
         
         presenter.setViewControllers([controller], animated: true)
     }
+}
+
+// MARK: - BooksViewModelNavDelegate
+extension HomeCoordinator: BooksNavDelegate {
+    func onBooksLogoutTapped() {
+        delegate?.onHomeCoordinatorLogout()
+    }
+    
+    
 }
 
 
