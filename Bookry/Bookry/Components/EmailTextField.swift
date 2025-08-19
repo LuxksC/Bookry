@@ -135,6 +135,7 @@ class EmailTextField: UICodableView {
             .store(in: &cancellables)
     }
     
+    // MARK: - Private Methods
     private func didChangeText() {
         let isTextEmpty = text?.isEmpty ?? true
         
@@ -143,6 +144,7 @@ class EmailTextField: UICodableView {
     }
 }
 
+// MARK: - UITextFieldDelegate
 extension EmailTextField: UITextFieldDelegate {
     func textFieldDidChangeSelection(_ textField: UITextField) {
         didChangeText()

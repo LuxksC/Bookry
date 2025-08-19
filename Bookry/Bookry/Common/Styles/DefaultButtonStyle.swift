@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct DefaultButtonStyle: ButtonStyle {
-    @EnvironmentObject var themeManager: ThemeManager
+    @StateObject private var themeManager = ThemeManager.shared
     
     @Environment(\.isEnabled) var isEnabled
     

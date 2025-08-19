@@ -8,14 +8,20 @@
 import SwiftUI
 
 struct ThemesView: View {
-    
+    @StateObject private var themeManager = ThemeManager.shared
     @StateObject var vm: ThemesViewModel
     
     var body: some View {
-        VStack(spacing: 32) {
-            Text("Themes View")
+        ZStack {
+            themeManager.colorScheme.white
+            
+            VStack(spacing: 32) {
+                Text("Themes View")
+                    .foregroundColor(themeManager.colorScheme.black)
+            }
         }
         .navigationBarBackButtonHidden()
+        .ignoresSafeArea()
     }
 }
 
