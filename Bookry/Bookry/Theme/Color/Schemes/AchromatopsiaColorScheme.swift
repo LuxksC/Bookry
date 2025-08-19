@@ -8,6 +8,10 @@
 import Foundation
 import SwiftUI
 
+extension ColorScheme where Self == AchromatopsiaColorScheme {
+    static var achromatopsia: AchromatopsiaColorScheme { .init() }
+}
+
 struct AchromatopsiaColorScheme: ColorScheme {
     var black: Color = Color(hex: 0x000000)
     var danger: Color = Color(hex: 0x888888) // medium gray

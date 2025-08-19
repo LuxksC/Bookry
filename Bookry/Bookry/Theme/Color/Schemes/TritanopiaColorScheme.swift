@@ -8,6 +8,10 @@
 import Foundation
 import SwiftUI
 
+extension ColorScheme where Self == TritanopiaColorScheme {
+    static var tritanopia: TritanopiaColorScheme { .init() }
+}
+
 struct TritanopiaColorScheme: ColorScheme {
     var black: Color = Color(hex: 0x000000)
     var danger: Color = Color(hex: 0xD32F2F) // strong red

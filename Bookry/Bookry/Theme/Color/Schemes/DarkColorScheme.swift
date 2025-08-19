@@ -8,6 +8,10 @@
 import Foundation
 import SwiftUI
 
+extension ColorScheme where Self == DarkColorScheme {
+    static var dark: DarkColorScheme { .init() }
+}
+
 struct DarkColorScheme: ColorScheme {
     var black: Color = Color(hex: 0xFFFFFF) // white for text on dark backgrounds
     var danger: Color = Color(hex: 0xFF5252) // bright red for dark backgrounds
