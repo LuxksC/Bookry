@@ -22,7 +22,7 @@ private extension ThemesHostingController {
     func setupView() {
         title = "Themes"
         
-        setCustomBackButton(target: self, selector: #selector(onBackButtonTapped))
+        setCustomBackButton(target: self, selector: #selector(onBackButtonTapped), color: UIColor(themeManager.colorScheme.black))
     }
 }
 
