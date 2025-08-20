@@ -12,16 +12,35 @@ struct ThemesView: View {
     @StateObject var vm: ThemesViewModel
     
     var body: some View {
-        ZStack {
-            themeManager.colorScheme.white
-            
-            VStack(spacing: 32) {
-                Text("Themes View")
-                    .foregroundColor(themeManager.colorScheme.black)
+        GeometryReader { geometry in
+            ZStack(alignment: .leading) {
+                themeManager.colorScheme.white
+                
+                VStack(alignment: .leading, spacing: 16) {
+                    Text("Default Themes")
+                        .foregroundColor(themeManager.colorScheme.black)
+                        .font(.bold3)
+                    
+                    ThemesRadioButtonList(vm: vm, themes: vm.defaultThemes)
+                    
+                    Text("Daltonism Themes")
+                        .foregroundColor(themeManager.colorScheme.black)
+                        .font(.bold3)
+                    
+                    ThemesRadioButtonList(vm: vm, themes: vm.daltonismThemes)
+                    
+                    Button("Teste", action: {
+                        print("Teste")
+                    })
+                    
+                    Spacer()
+                }
+                .padding(.horizontal)
+                .padding(.top, geometry.safeAreaInsets.top + 16)
             }
+            .ignoresSafeArea()
         }
         .navigationBarBackButtonHidden()
-        .ignoresSafeArea()
     }
 }
 

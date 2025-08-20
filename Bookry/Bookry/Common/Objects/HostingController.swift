@@ -43,13 +43,13 @@ extension HostingController {
             .sink { [weak self] newColorTheme in
                 guard let self else { return }
                 self.setupNavBarAppearance(
-                    backgroundColor: UIColor(themeManager.colorScheme.white),
-                    foregroundColor: UIColor(themeManager.colorScheme.black)
+                    backgroundColor: UIColor(newColorTheme.scheme.white),
+                    foregroundColor: UIColor(newColorTheme.scheme.black)
                 )
                 self.setupTabBarAppearance(
-                    backgroundColor: UIColor(themeManager.colorScheme.white),
-                    selectedColor: UIColor(themeManager.colorScheme.secondary),
-                    disabledColor: UIColor(themeManager.colorScheme.gray)
+                    backgroundColor: UIColor(newColorTheme.scheme.white),
+                    selectedColor: UIColor(newColorTheme.scheme.secondary),
+                    disabledColor: UIColor(newColorTheme.scheme.gray)
                 )
             }
             .store(in: &cancellables)

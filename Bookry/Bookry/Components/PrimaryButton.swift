@@ -8,12 +8,17 @@
 import SwiftUI
 
 struct PrimaryButton: View {
+    @StateObject private var themeManager = ThemeManager.shared
+    
     var text: String
     var action: (() -> Void)
     
     var body: some View {
         Button(action: action) {
             Text(text)
+                .font(.bold5)
+                .foregroundColor(themeManager.colorScheme.white)
+                
         }
         .buttonStyle(DefaultButtonStyle())
     }

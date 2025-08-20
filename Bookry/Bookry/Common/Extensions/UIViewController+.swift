@@ -38,6 +38,9 @@ extension UIViewController {
         
         UINavigationBar.appearance().standardAppearance = appearance
         UINavigationBar.appearance().scrollEdgeAppearance = appearance
+        
+        navigationController?.navigationBar.setNeedsLayout()
+        navigationController?.navigationBar.layoutIfNeeded()
     }
 }
 
@@ -60,5 +63,8 @@ extension UIViewController {
         appearance.stackedLayoutAppearance.normal.titleTextAttributes = [.foregroundColor: disabledColor]
         
         UITabBar.appearance().standardAppearance = appearance
+        
+        tabBarController?.tabBar.setNeedsLayout()
+        tabBarController?.tabBar.layoutIfNeeded()
     }
 }

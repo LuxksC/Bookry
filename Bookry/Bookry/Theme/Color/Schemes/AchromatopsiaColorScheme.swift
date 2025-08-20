@@ -17,10 +17,16 @@ struct AchromatopsiaColorScheme: ColorScheme {
     var danger: Color = Color(hex: 0x888888) // medium gray
     var dangerDark: Color = Color(hex: 0x444444) // dark gray
     var dangerLight: Color = Color(hex: 0xCCCCCC) // light gray
+    var gray: Color = Color(hex: 0xA0A0A0) // neutral gray, distinct from other grays
+    var grayDark: Color = Color(hex: 0x444444) // dark gray
+    var grayLight: Color = Color(hex: 0xE0E0E0) // lighter gray, distinct from white and dangerLight
     var primary: Color = Color(hex: 0x888888) // medium gray
     var secondary: Color = Color(hex: 0xCCCCCC) // light gray
+    var success: Color = Color(hex: 0xA0A0A0) // neutral gray, distinct from danger
+    var successDark: Color = Color(hex: 0x444444) // dark gray
+    var successLight: Color = Color(hex: 0xE0E0E0) // lighter gray
+    var warning: Color = Color(hex: 0xB0B0B0) // slightly different gray for warning
+    var warningDark: Color = Color(hex: 0x444444) // dark gray
+    var warningLight: Color = Color(hex: 0xF5F5F5) // very light gray
     var white: Color = Color(hex: 0xFFFFFF)
-    var gray: Color = Color(hex: 0x888888) // medium gray
-    var grayLight: Color = Color(hex: 0xCCCCCC) // light gray
-    var grayDark: Color = Color(hex: 0x444444) // dark gray
 }
