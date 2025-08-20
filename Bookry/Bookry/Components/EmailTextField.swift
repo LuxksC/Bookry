@@ -38,7 +38,7 @@ class EmailTextField: UICodableView {
     lazy var emailLabel: UILabel = {
         let label = UILabel()
         label.text = "E-mail"
-        label.font = themeManager.fontStyle(.regular7)
+        label.font = themeManager.fontStyle(.regular6)
         label.textColor = UIColor(themeManager.colorScheme.white)
         label.numberOfLines = 1
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -49,7 +49,7 @@ class EmailTextField: UICodableView {
     lazy var textField: UITextField = {
         let textField = UITextField()
         textField.placeholder = "E-mail"
-        textField.font = themeManager.fontStyle(.regular6)
+        textField.font = themeManager.fontStyle(.regular5)
         textField.textColor = UIColor(themeManager.colorScheme.white)
         textField.backgroundColor = .clear
         textField.borderStyle = .none
@@ -71,7 +71,7 @@ class EmailTextField: UICodableView {
         let label = UILabel()
         label.text = "E-mail inválido"
         label.textColor = UIColor(themeManager.colorScheme.dangerLight)
-        label.font = themeManager.fontStyle(.regular7)
+        label.font = themeManager.fontStyle(.regular6)
         label.numberOfLines = 0
         label.isHidden = true
         return label
@@ -128,9 +128,9 @@ class EmailTextField: UICodableView {
             .receive(on: DispatchQueue.main)
             .sink { [weak self] newFont in
                 guard let self else { return }
-                self.emailLabel.font = newFont.style(.regular7)
-                self.textField.font = newFont.style(.regular6)
-                self.errorMessage.font = newFont.style(.regular7)
+                self.emailLabel.font = newFont.style(.regular6)
+                self.textField.font = newFont.style(.regular5)
+                self.errorMessage.font = newFont.style(.regular6)
             }
             .store(in: &cancellables)
     }

@@ -30,7 +30,7 @@ class LoginView: UICodableView {
     lazy var title: UILabel = {
         let label = UILabel()
         label.text = "Entre com sua conta Bookry e acesse seus livros"
-        label.font = themeManager.fontStyle(.bold4)
+        label.font = themeManager.fontStyle(.bold3)
         label.textColor = UIColor(themeManager.colorScheme.white)
         label.numberOfLines = 0
         return label
