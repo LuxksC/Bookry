@@ -16,6 +16,7 @@ protocol SettingsMenuViewModelable: ObservableObject {
 
 protocol SettingsMenuNavDelegate: AnyObject {
     func onSettingsMenuThemesTapped()
+    func onSettingsMenuLogoutTapped()
 }
 
 class SettingsMenuViewModel: BaseViewModel, SettingsMenuViewModelable {
@@ -31,6 +32,10 @@ class SettingsMenuViewModel: BaseViewModel, SettingsMenuViewModelable {
     
     func didTapThemes() {
         navDelegate?.onSettingsMenuThemesTapped()
+    }
+    
+    func didTapLogout() {
+        navDelegate?.onSettingsMenuLogoutTapped()
     }
     
     // original
@@ -67,7 +72,7 @@ class SettingsMenuViewModel: BaseViewModel, SettingsMenuViewModelable {
                 title: "Logout",
                 image: "rectangle.portrait.and.arrow.right",
                 section: .others,
-                action: { print("logout user") }
+                action: { self.didTapLogout() }
             ),
         ]
     }

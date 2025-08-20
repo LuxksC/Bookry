@@ -9,7 +9,7 @@ import SwiftUI
 import UIKit
 
 protocol HomeCoordinatorDelegate: AnyObject {
-    func onHomeCoordinatorLogout()
+    func onHomeCoordinatorCompletion(homeCoordinator: HomeCoordinator)
 }
 
 class HomeCoordinator: BaseCoordinator<UINavigationController> {
@@ -34,11 +34,9 @@ private extension HomeCoordinator {
 
 // MARK: - BooksViewModelNavDelegate
 extension HomeCoordinator: BooksNavDelegate {
-    func onBooksLogoutTapped() {
-        delegate?.onHomeCoordinatorLogout()
+    func onBooksLogoTapped() {
+        print("Logo Tapped")
     }
-    
-    
 }
 
 

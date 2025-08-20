@@ -8,7 +8,13 @@
 import SwiftUI
 import UIKit
 
+protocol SettingsCoordinatorDelegate: AnyObject {
+    func onSettingsCoordinatorCompletion(settingsCoordinator: SettingsCoordinator)
+}
+
 class SettingsCoordinator: BaseCoordinator<UINavigationController> {
+    weak var delegate: SettingsCoordinatorDelegate?
+    
     override func start() {
         showSettingsMenu()
     }
@@ -42,6 +48,10 @@ private extension SettingsCoordinator {
 extension SettingsCoordinator: SettingsMenuNavDelegate {
     func onSettingsMenuThemesTapped() {
         showThemes()
+    }
+    
+    func onSettingsMenuLogoutTapped() {
+        delegate?.onSettingsCoordinatorCompletion(settingsCoordinator: self)
     }
 }
 

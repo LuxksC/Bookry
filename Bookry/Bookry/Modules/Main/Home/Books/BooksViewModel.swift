@@ -13,7 +13,7 @@ protocol BooksViewModelable: ObservableObject {
 }
 
 protocol BooksNavDelegate: AnyObject {
-    func onBooksLogoutTapped()
+    func onBooksLogoTapped()
 }
 
 class BooksViewModel: BaseViewModel, BooksViewModelable {
@@ -22,6 +22,6 @@ class BooksViewModel: BaseViewModel, BooksViewModelable {
     
     func didTapLogout() {
         print("didTapLogout called")
-        navDelegate?.onBooksLogoutTapped()
+        navDelegate?.onBooksLogoTapped()
     }
 }

@@ -81,6 +81,7 @@ private extension MainCoordinator {
         )
         
         let coordinator = SettingsCoordinator(presenter: flowPresenter)
+        coordinator.delegate = self
         coordinator.start()
         
         store(childCoordinator: coordinator)
@@ -90,7 +91,16 @@ private extension MainCoordinator {
 
 // MARK: - HomeCoordinatorDelegate
 extension MainCoordinator: HomeCoordinatorDelegate {
-    func onHomeCoordinatorLogout() {
+    func onHomeCoordinatorCompletion(homeCoordinator: HomeCoordinator) {
+        print("Home Coordinator Completed")
+        remove(childCoordinator: homeCoordinator)
+    }
+}
+
+// MARK: - SettingsCoordinatorDelegate
+extension MainCoordinator: SettingsCoordinatorDelegate {
+    func onSettingsCoordinatorCompletion(settingsCoordinator: SettingsCoordinator) {
         delegate?.onMainCoordinatorCompletion(mainCoordinator: self)
+        remove(childCoordinator: settingsCoordinator)
     }
 }

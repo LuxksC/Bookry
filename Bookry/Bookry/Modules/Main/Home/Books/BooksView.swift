@@ -8,16 +8,18 @@
 import SwiftUI
 
 struct BooksView: View {
+    @StateObject private var themeManager = ThemeManager.shared
     @StateObject var vm: BooksViewModel
     
     var body: some View {
-        VStack {
-            Text("Home View")
-                .font(.largeTitle)
+        ZStack {
+            themeManager.colorScheme.white
             
-            Button(action: vm.didTapLogout, label: {
-                Text("Logout User")
-            })
+            VStack {
+                Text("Home View")
+                    .foregroundColor(themeManager.colorScheme.black)
+                    .font(.bold1)
+            }
         }
     }
 }
