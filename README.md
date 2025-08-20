@@ -21,11 +21,10 @@ Bookry is designed to be inclusive and accessible:
 2. Open `Bookry.xcodeproj` in Xcode.
 3. Build and run on your preferred iOS device or simulator.
 
-## Contributing 🤝
-
-
 ## Documentation 📄
 
 For detailed documentation, visit the [project documentation](https://www.notion.so/Accessibility-255340647f9280049db0cc1d11a15ea4?source=copy_link).
+
+## Contributing 🤝
 
 Contributions are welcome! Please open issues or submit pull requests for improvements or new features.
