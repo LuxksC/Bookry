@@ -16,18 +16,18 @@ struct SettingsMenuCard: View {
         Button(action: item.action) {
             ZStack(alignment: .leading) {
                 RoundedRectangle(cornerRadius: 12)
-                    .stroke(themeManager.colorScheme.black, lineWidth: 2)
+                    .stroke(themeManager.colorScheme.primary, lineWidth: 2)
                 
                 VStack(alignment: .leading, spacing: 32) {
                     Image(systemName: item.image)
                         .resizable()
                         .scaledToFit()
                         .frame(height: 30)
-                        .tint(themeManager.colorScheme.black)
+                        .tint(themeManager.colorScheme.primary)
                     
                     Text(item.title)
                         .font(.bold5)
-                        .foregroundColor(themeManager.colorScheme.black)
+                        .foregroundColor(themeManager.colorScheme.primary)
                 }
                 .padding()
             }

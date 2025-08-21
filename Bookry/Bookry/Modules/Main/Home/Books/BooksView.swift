@@ -17,7 +17,7 @@ struct BooksView: View {
             
             VStack {
                 Text("Home View")
-                    .foregroundColor(themeManager.colorScheme.black)
+                    .foregroundColor(themeManager.colorScheme.success)
                     .font(.bold1)
             }
         }
