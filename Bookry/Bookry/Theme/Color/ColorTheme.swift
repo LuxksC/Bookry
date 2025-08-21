@@ -7,6 +7,11 @@
 
 import SwiftUI
 
+struct PaletteColor: Identifiable {
+    let id = UUID()
+    let color: Color
+}
+
 enum ColorTheme: String {
     case light = "light"
     case dark = "dark"
@@ -34,61 +39,61 @@ extension ColorTheme {
         }
     }
     
-    var colorPreviewPalette: [Color] {
+    var colorPreviewPalette: [PaletteColor] {
         switch self {
         case .light:
             return [
-                LightColorScheme().primary,
-                LightColorScheme().secondary,
-                LightColorScheme().success,
-                LightColorScheme().warning,
-                LightColorScheme().danger,
-                LightColorScheme().gray
+                PaletteColor(color: LightColorScheme().primary),
+                PaletteColor(color: LightColorScheme().secondary),
+                PaletteColor(color: LightColorScheme().success),
+                PaletteColor(color: LightColorScheme().warning),
+                PaletteColor(color: LightColorScheme().danger),
+                PaletteColor(color: LightColorScheme().gray)
             ]
         case .dark:
             return [
-                DarkColorScheme().primary,
-                DarkColorScheme().secondary,
-                DarkColorScheme().success,
-                DarkColorScheme().warning,
-                DarkColorScheme().danger,
-                DarkColorScheme().gray
+                PaletteColor(color: DarkColorScheme().primary),
+                PaletteColor(color: DarkColorScheme().secondary),
+                PaletteColor(color: DarkColorScheme().success),
+                PaletteColor(color: DarkColorScheme().warning),
+                PaletteColor(color: DarkColorScheme().danger),
+                PaletteColor(color: DarkColorScheme().gray)
             ]
         case .deuteranopia:
             return [
-                DeuteranopiaColorScheme().primary,
-                DeuteranopiaColorScheme().secondary,
-                DeuteranopiaColorScheme().success,
-                DeuteranopiaColorScheme().warning,
-                DeuteranopiaColorScheme().danger,
-                DeuteranopiaColorScheme().gray
+                PaletteColor(color: DeuteranopiaColorScheme().primary),
+                PaletteColor(color: DeuteranopiaColorScheme().secondary),
+                PaletteColor(color: DeuteranopiaColorScheme().success),
+                PaletteColor(color: DeuteranopiaColorScheme().warning),
+                PaletteColor(color: DeuteranopiaColorScheme().danger),
+                PaletteColor(color: DeuteranopiaColorScheme().gray)
             ]
         case .protanopia:
             return [
-                ProtanopiaColorScheme().primary,
-                ProtanopiaColorScheme().secondary,
-                ProtanopiaColorScheme().success,
-                ProtanopiaColorScheme().warning,
-                ProtanopiaColorScheme().danger,
-                ProtanopiaColorScheme().gray
+                PaletteColor(color: ProtanopiaColorScheme().primary),
+                PaletteColor(color: ProtanopiaColorScheme().secondary),
+                PaletteColor(color: ProtanopiaColorScheme().success),
+                PaletteColor(color: ProtanopiaColorScheme().warning),
+                PaletteColor(color: ProtanopiaColorScheme().danger),
+                PaletteColor(color: ProtanopiaColorScheme().gray)
             ]
         case .achromatopsia:
             return [
-                AchromatopsiaColorScheme().primary,
-                AchromatopsiaColorScheme().secondary,
-                AchromatopsiaColorScheme().success,
-                AchromatopsiaColorScheme().warning,
-                AchromatopsiaColorScheme().danger,
-                AchromatopsiaColorScheme().gray
+                PaletteColor(color: AchromatopsiaColorScheme().primary),
+                PaletteColor(color: AchromatopsiaColorScheme().secondary),
+                PaletteColor(color: AchromatopsiaColorScheme().success),
+                PaletteColor(color: AchromatopsiaColorScheme().warning),
+                PaletteColor(color: AchromatopsiaColorScheme().danger),
+                PaletteColor(color: AchromatopsiaColorScheme().gray)
             ]
         case .tritanopia:
             return [
-                TritanopiaColorScheme().primary,
-                TritanopiaColorScheme().secondary,
-                TritanopiaColorScheme().success,
-                TritanopiaColorScheme().warning,
-                TritanopiaColorScheme().danger,
-                TritanopiaColorScheme().gray
+                PaletteColor(color: TritanopiaColorScheme().primary),
+                PaletteColor(color: TritanopiaColorScheme().secondary),
+                PaletteColor(color: TritanopiaColorScheme().success),
+                PaletteColor(color: TritanopiaColorScheme().warning),
+                PaletteColor(color: TritanopiaColorScheme().danger),
+                PaletteColor(color: TritanopiaColorScheme().gray)
             ]
         }
     }

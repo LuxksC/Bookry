@@ -52,7 +52,7 @@ struct SettingsMenuView: View {
                 .background(themeManager.colorScheme.gray)
                 .clipShape(Circle())
                 .overlay(Circle().stroke(
-                    themeManager.colorScheme.secondary,
+                    themeManager.colorScheme.primary,
                     lineWidth: 4)
                 )
             

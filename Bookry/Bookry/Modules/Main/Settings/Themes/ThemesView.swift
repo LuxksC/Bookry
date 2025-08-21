@@ -29,9 +29,12 @@ struct ThemesView: View {
                     
                     ThemesRadioButtonList(vm: vm, themes: vm.daltonismThemes)
                     
-                    Button("Teste", action: {
-                        print("Teste")
-                    })
+                    Text("Visual Adjustment")
+                        .foregroundColor(themeManager.colorScheme.black)
+                        .font(.bold3)
+                    
+                    Toggle("Dyslexia Font", isOn: $vm.isDyslexiaFontEnabled)
+                        .foregroundColor(themeManager.colorScheme.black)
                     
                     Spacer()
                 }
@@ -41,6 +44,9 @@ struct ThemesView: View {
             .ignoresSafeArea()
         }
         .navigationBarBackButtonHidden()
+        .onAppear {
+            vm.setupBindings()
+        }
     }
 }
 

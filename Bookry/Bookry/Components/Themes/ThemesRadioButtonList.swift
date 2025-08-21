@@ -21,11 +21,10 @@ struct ThemesRadioButtonList: View {
                     alignment: .leading
                 ) {
                     ThemeRadioButton(selectedTheme: $vm.selectedTheme, theme: theme)
-                        .disabled(true)
                     
                     HStack(spacing: 0) {
-                        ForEach(theme.colorPreviewPalette, id: \.self) { color in
-                            color.frame(width: 24, height: 24)
+                        ForEach(theme.colorPreviewPalette) { paletteColor in
+                            paletteColor.color.frame(width: 24, height: 24)
                         }
                         
                     }

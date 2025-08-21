@@ -9,6 +9,7 @@ import SwiftUI
 
 protocol ThemeManagerProtocol {
     var colorTheme: ColorTheme { get }
+    var font: BFont { get }
     func apply(colorTheme: ColorTheme)
     func apply(font: BFont)
     func apply(font: BFont, colorTheme: ColorTheme)
